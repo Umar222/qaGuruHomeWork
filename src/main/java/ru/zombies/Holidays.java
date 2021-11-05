@@ -1,4 +1,4 @@
-package ru;
+package ru.zombies;
 
 public class Holidays {
 

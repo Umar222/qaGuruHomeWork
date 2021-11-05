@@ -1,6 +1,6 @@
 package ru.zombies;
 
-import static ru.Holidays.holidays;
+import static ru.zombies.Holidays.holidays;
 import static ru.zombies.ZombieFarm.*;
 
 public class ZombieLand {
