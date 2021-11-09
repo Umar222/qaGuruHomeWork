@@ -15,6 +15,6 @@ public class DragAndDropTests {
         SelenideElement elementB = $(By.id("column-b"));
         open("https://the-internet.herokuapp.com/drag_and_drop");
         $(elementA).dragAndDropTo(elementB);
-        $(By.xpath("//div[@id = \"column-a\"]/header")).shouldHave(Condition.text("B"));
+        elementA.shouldHave(Condition.text("B"));
     }
 }
