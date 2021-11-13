@@ -1,32 +1,36 @@
-package ru.pages;
+package ru.umar.pages;
 
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class StudentRegistrationFormPage {
 
 
-    private final SelenideElement firstNameField = $(By.id("firstName"));
-    private final SelenideElement lastNameField = $(By.id("lastName"));
-    private final SelenideElement emailField = $(By.id("userEmail"));
-    private final SelenideElement userPhoneNumberField = $(By.id("userNumber"));
-    private final SelenideElement currentAddress = $(By.id("currentAddress"));
-    private final SelenideElement submitButton = $(By.id("submit"));
-    private final SelenideElement uploadFileField = $(By.className("form-control-file"));
-    public static final ElementsCollection dataBoard = $$(By.cssSelector(".table-responsive tdbody tr")).snapshot();
-
-
+    private final SelenideElement firstNameField = $(By.id("firstName")),
+            lastNameField = $(By.id("lastName")),
+            emailField = $(By.id("userEmail")),
+            userPhoneNumberField = $(By.id("userNumber")),
+            currentAddress = $(By.id("currentAddress")),
+            submitButton = $(By.id("submit")),
+            resultsTable = $(".table-responsive"),
+            uploadFileField = $(By.className("form-control-file")),
+            resultTableTitle = $(By.id("example-modal-sizes-title-lg"));
 
     public SelenideElement someButton = $(By.className("subjects-auto-complete__value-container"));
 
-    public StudentRegistrationFormPage addCurrentAddress(String address){
+    public StudentRegistrationFormPage checkTableTitle(String title){
+        resultTableTitle.shouldHave(text(title));
+        return this;
+    }
+
+    public StudentRegistrationFormPage addCurrentAddress(String address) {
         currentAddress.setValue(address);
         return this;
     }
@@ -75,7 +79,7 @@ public class StudentRegistrationFormPage {
         $(By.cssSelector(".react-datepicker__month-select")).selectOptionContainingText(month);
         $(By.cssSelector(".react-datepicker__year-select")).click();
         $(By.cssSelector(".react-datepicker__year-select")).selectOptionByValue(year);
-        $(By.cssSelector(".react-datepicker__day--0"+day)).click();
+        $(By.cssSelector(".react-datepicker__day--0" + day)).click();
         return this;
     }
 
@@ -87,13 +91,18 @@ public class StudentRegistrationFormPage {
     }
 
     public StudentRegistrationFormPage uploadPicture(String fileName) {
-        uploadFileField.uploadFile(new File("src/test/resources/testFiles/"+fileName));
-        uploadFileField.uploadFromClasspath("testFiles/"+fileName);
+        uploadFileField.uploadFile(new File("src/test/resources/testFiles/" + fileName));
+        uploadFileField.uploadFromClasspath("testFiles/" + fileName);
         return this;
     }
 
     public StudentRegistrationFormPage submit() {
         submitButton.click();
+        return this;
+    }
+
+    public StudentRegistrationFormPage checkResultsTableValue(String key, String value) {
+        resultsTable.$(byText(key)).parent().shouldHave(text(value));
         return this;
     }
 
