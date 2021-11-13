@@ -1,7 +1,7 @@
 package ru.umar.gitHubTests;
 
 import org.junit.jupiter.api.*;
-import ru.pages.StudentRegistrationFormPage;
+import ru.umar.pages.StudentRegistrationFormPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static ru.TestData.*;
