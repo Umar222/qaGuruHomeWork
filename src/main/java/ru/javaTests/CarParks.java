@@ -10,5 +10,6 @@ public class CarParks {
         Car car = new Car("BMW",1500,true);
         car.sellCar(true);
         System.out.println(getPriceWithNDS20Prosent(300000));
+        car.setCarOwner(new Car.CarOwner().setDrunk(true));
     }
 }
