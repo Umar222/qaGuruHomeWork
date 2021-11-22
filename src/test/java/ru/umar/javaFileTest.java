@@ -10,8 +10,7 @@ import org.openqa.selenium.By;
 import java.io.File;
 import java.io.IOException;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -45,6 +44,4 @@ public class javaFileTest {
         $(By.id("dropzone")).uploadFromClasspath("picture1.jpg");
         $("span[class=\"download-link__text\"]").shouldHave(Condition.visible);
     }
-
-
 }
