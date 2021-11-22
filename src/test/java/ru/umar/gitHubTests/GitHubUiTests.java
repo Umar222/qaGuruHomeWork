@@ -1,23 +1,29 @@
 package ru.umar.gitHubTests;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class GitHubUiTests {
 
+    private static final String URL = "https://github.com/selenide/selenide";
+    private final SelenideElement wikiTab = $("#wiki-tab");
+    private final SelenideElement wikiBody = $(byText("Welcome to the selenide wiki!"));
+    private final SelenideElement searchSoftAssertions = $(byText("Soft assertions"));
+    private final SelenideElement assertionText = $("ol li");
 
     @Test
     void checkSoftAssertionsChapter(){
-        open("https://github.com/selenide/selenide");
-        $(By.id("wiki-tab")).click();
-        $(By.id("wiki-body")).shouldHave(text("Welcome to the selenide wiki!"));
-        $("#wiki-tab").click();
-        $("#wiki-pages-filter").setValue("SoftAssertions");
-        $(By.xpath("//a[@href=\"/selenide/selenide/wiki/SoftAssertions\"]")).click();
-        $(By.className("markdown-body")).shouldHave(text("Using JUnit5 extend test class:"));
+        open(URL);
+        wikiTab.click();
+        wikiBody.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        searchSoftAssertions.click();
+        assertionText.parent().shouldHave(Condition.text("com.codeborne.selenide.junit5.SoftAssertsExtension"));
     }
 }
