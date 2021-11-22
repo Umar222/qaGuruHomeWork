@@ -21,6 +21,5 @@ public class LambdaTests {
 
         step("Проверить наличие текста",()-> $(By.id("js-repo-pjax-container"))
                 .shouldHave(Condition.text(ISSUE_TEXT)));
-
     }
 }
