@@ -1,13 +1,11 @@
 package ru.umar;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ParameterTests {
 
@@ -18,7 +16,6 @@ public class ParameterTests {
         $(By.id("dropzone")).uploadFromClasspath(file);
         $("span[class=\"download-link__text\"]").shouldHave(Condition.visible);
     }
-
 
     @ParameterizedTest
     @ValueSource(strings = {"ЮАР", "Россия", "Таджикистан"})
