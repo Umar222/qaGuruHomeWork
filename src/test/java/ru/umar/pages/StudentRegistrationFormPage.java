@@ -91,8 +91,8 @@ public class StudentRegistrationFormPage {
     }
 
     public StudentRegistrationFormPage uploadPicture(String fileName) {
-        uploadFileField.uploadFile(new File("src/test/resources/testFiles/" + fileName));
-        uploadFileField.uploadFromClasspath("testFiles/" + fileName);
+        uploadFileField.uploadFile(new File("src/test/resources/" + fileName));
+        uploadFileField.uploadFromClasspath(fileName);
         return this;
     }
 
