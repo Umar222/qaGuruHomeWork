@@ -4,7 +4,7 @@ import org.junit.jupiter.api.*;
 import ru.umar.pages.StudentRegistrationFormPage;
 
 import static com.codeborne.selenide.Selenide.open;
-import static ru.TestData.*;
+import static ru.umar.TestData.*;
 
 
 public class Lesson2 {
