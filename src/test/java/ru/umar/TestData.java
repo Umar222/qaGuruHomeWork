@@ -1,4 +1,5 @@
-package ru;
+package ru.umar;
+
 
 import com.github.javafaker.Faker;
 
