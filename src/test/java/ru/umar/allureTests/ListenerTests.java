@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class ListenerTests {
 
-    private final String ISSUE_TEXT = "Bad browser language in version 6+";
+    private final String ISSUE_TEXT = "Error using selenide-testng 6.0.3 with maven-surefire-plugin 3.0.0-M5";
 
     @Test
     public void checkIssue(){
