@@ -1,26 +1,23 @@
 package ru.umar.gitHubTests;
 
 import org.junit.jupiter.api.*;
+import ru.umar.TestBase;
 import ru.umar.pages.StudentRegistrationFormPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static ru.umar.TestData.*;
 
 
-public class Lesson2 {
+public class Lesson2 extends TestBase {
 
-    StudentRegistrationFormPage registrationFormElements = new StudentRegistrationFormPage();
-
-
-    @BeforeEach
-    public void openPage() {
-        open("https://demoqa.com/automation-practice-form");
-    }
+    StudentRegistrationFormPage registration = new StudentRegistrationFormPage();
 
 
     @Test
+    @Tag("smoke")
     public void formFilling() {
-        registrationFormElements
+        open("https://demoqa.com/automation-practice-form");
+        registration
                 .setFio(firstName, lastName)
                 .emailField(email)
                 .chooseGender("Male")
@@ -34,9 +31,9 @@ public class Lesson2 {
                 .chooseCityField("Delhi")
                 .submit();
 
-        registrationFormElements.checkTableTitle("Thanks for submitting the form");
+        registration.checkTableTitle("Thanks for submitting the form");
 
-        registrationFormElements.checkResultsTableValue("Student Name", firstName +" "+ lastName)
+        registration.checkResultsTableValue("Student Name", firstName +" "+ lastName)
                 .checkResultsTableValue("Student Email", email)
                 .checkResultsTableValue("Gender", "Male")
                 .checkResultsTableValue("Mobile", "9539323424")
