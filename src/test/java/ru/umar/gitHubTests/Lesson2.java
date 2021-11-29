@@ -76,6 +76,4 @@ public class Lesson2 extends TestBase {
                 .checkResultsTableValue("Address", address)
                 .checkResultsTableValue("State and City", "NCR Delhi");
     }
-
-
 }
