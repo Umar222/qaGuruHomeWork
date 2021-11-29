@@ -1,4 +1,4 @@
-package ru.umar;
+package ru.umar.helper;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
